@@ -17,6 +17,7 @@ public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_CHARACTER = "extra_character";
     private TextView characterDetails;
+    private DetailViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,9 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         GoTCharacter gotCharacter = getIntent().getParcelableExtra(EXTRA_CHARACTER);
+        viewModel = new DetailViewModel(gotCharacter);
 
+        setTitle(viewModel.getTitle());
         if (gotCharacter.getFullName().startsWith("A"))
             setTitle("Sir " + gotCharacter.getFullName());
         else
