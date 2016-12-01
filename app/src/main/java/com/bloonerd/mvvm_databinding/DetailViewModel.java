@@ -25,4 +25,8 @@ public class DetailViewModel {
     public int getCharacterDetailsColor() {
         return gotCharacter.alive ? Color.GREEN : Color.RED;
     }
+
+    public String getCharacterDetails() {
+        return gotCharacter.description != null ? gotCharacter.description : "";
+    }
 }
