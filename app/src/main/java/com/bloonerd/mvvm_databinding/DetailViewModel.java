@@ -1,14 +1,21 @@
 package com.bloonerd.mvvm_databinding;
 
+import android.content.Context;
+import android.databinding.BindingAdapter;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
+import android.widget.ImageView;
 
 public class DetailViewModel {
 
 
     private final GoTCharacter gotCharacter;
+    private Context context;
 
-    public DetailViewModel(GoTCharacter gotCharacter) {
+    public DetailViewModel(GoTCharacter gotCharacter, Context context) {
         this.gotCharacter = gotCharacter;
+        this.context = context;
     }
 
 
@@ -28,5 +35,9 @@ public class DetailViewModel {
 
     public String getCharacterDetails() {
         return gotCharacter.description != null ? gotCharacter.description : "";
+    }
+
+    public Drawable getImageHouse() {
+        return ContextCompat.getDrawable(context, gotCharacter.houseResId);
     }
 }

@@ -35,6 +35,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="8dp"
+            android:src="@{viewModel.imageHouse}"
             tools:src="@drawable/stark" />
 
         <TextView

@@ -33,7 +33,7 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         GoTCharacter gotCharacter = getIntent().getParcelableExtra(EXTRA_CHARACTER);
-        viewModel = new DetailViewModel(gotCharacter);
+        viewModel = new DetailViewModel(gotCharacter, this);
         binding.setViewModel(viewModel);
 
         setTitle(viewModel.getTitle());
