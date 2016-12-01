@@ -47,11 +47,8 @@ public class DetailActivity extends AppCompatActivity {
 
         characterDetails.setText(gotCharacter.description);
         imgHouse.setImageResource(gotCharacter.houseResId);
-
         textHouseName.setText(viewModel.getHouseName());
-
-        int color = gotCharacter.alive ? Color.GREEN : Color.RED;
-        characterDetails.setTextColor(color);
+        characterDetails.setTextColor(viewModel.getCharacterDetailsColor());
     }
 
     public void onChangeDescriptionColor(View view) {

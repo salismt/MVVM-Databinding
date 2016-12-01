@@ -1,5 +1,7 @@
 package com.bloonerd.mvvm_databinding;
 
+import android.graphics.Color;
+
 public class DetailViewModel {
 
 
@@ -18,5 +20,9 @@ public class DetailViewModel {
     public String getHouseName() {
         return gotCharacter.house != null && gotCharacter.house.equals("Stark") ?
                 "Chateau " + gotCharacter.house : gotCharacter.house;
+    }
+
+    public int getCharacterDetailsColor() {
+        return gotCharacter.alive ? Color.GREEN : Color.RED;
     }
 }
