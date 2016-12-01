@@ -2,6 +2,7 @@ package com.bloonerd.mvvm_databinding;
 
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.ActionBar;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bloonerd.mvvm_databinding.databinding.ActivityDetailBinding;
 import com.squareup.picasso.Picasso;
 
 public class DetailActivity extends AppCompatActivity {
@@ -18,11 +20,12 @@ public class DetailActivity extends AppCompatActivity {
     public static final String EXTRA_CHARACTER = "extra_character";
     private TextView characterDetails;
     private DetailViewModel viewModel;
+    public ActivityDetailBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -31,12 +34,11 @@ public class DetailActivity extends AppCompatActivity {
 
         GoTCharacter gotCharacter = getIntent().getParcelableExtra(EXTRA_CHARACTER);
         viewModel = new DetailViewModel(gotCharacter);
+        binding.setViewModel(viewModel);
 
         setTitle(viewModel.getTitle());
 
         ImageView imgCharacter = (ImageView) findViewById(R.id.image_character);
-        ImageView imgHouse = (ImageView) findViewById(R.id.image_house);
-        TextView textHouseName = (TextView) findViewById(R.id.text_house_name);
         characterDetails = (TextView) findViewById(R.id.text_character_story);
 
         Picasso.with(this)
@@ -45,10 +47,6 @@ public class DetailActivity extends AppCompatActivity {
                 .error(R.drawable.profile_placeholder_error_full)
                 .into(imgCharacter);
 
-        characterDetails.setText(gotCharacter.description);
-        imgHouse.setImageResource(gotCharacter.houseResId);
-        textHouseName.setText(viewModel.getHouseName());
-        characterDetails.setTextColor(viewModel.getCharacterDetailsColor());
     }
 
     public void onChangeDescriptionColor(View view) {
