@@ -33,10 +33,6 @@ public class DetailActivity extends AppCompatActivity {
         viewModel = new DetailViewModel(gotCharacter);
 
         setTitle(viewModel.getTitle());
-        if (gotCharacter.getFullName().startsWith("A"))
-            setTitle("Sir " + gotCharacter.getFullName());
-        else
-            setTitle(gotCharacter.getFullName());
 
         ImageView imgCharacter = (ImageView) findViewById(R.id.image_character);
         ImageView imgHouse = (ImageView) findViewById(R.id.image_house);
