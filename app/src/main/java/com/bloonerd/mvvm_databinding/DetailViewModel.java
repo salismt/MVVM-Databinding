@@ -1,6 +1,8 @@
 package com.bloonerd.mvvm_databinding;
 
 import android.content.Context;
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -10,15 +12,16 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-public class DetailViewModel {
+public class DetailViewModel extends BaseObservable {
 
-
+    private int characterDetailsColor;
     private final GoTCharacter gotCharacter;
     private final Context context;
 
     public DetailViewModel(GoTCharacter gotCharacter, Context context) {
         this.gotCharacter = gotCharacter;
         this.context = context;
+        this.characterDetailsColor = gotCharacter.alive ? Color.GREEN : Color.RED;
     }
 
 
@@ -32,8 +35,9 @@ public class DetailViewModel {
                 "Chateau " + gotCharacter.house : gotCharacter.house;
     }
 
+    @Bindable
     public int getCharacterDetailsColor() {
-        return gotCharacter.alive ? Color.GREEN : Color.RED;
+        return characterDetailsColor;
     }
 
     public String getCharacterDetails() {
@@ -55,5 +59,10 @@ public class DetailViewModel {
                 .placeholder(R.drawable.profile_placeholder_full)
                 .error(R.drawable.profile_placeholder_error_full)
                 .into(view);
+    }
+
+    public void setCharacterDetailsColor(int characterDetailsColor) {
+        this.characterDetailsColor = characterDetailsColor;
+        notifyPropertyChanged(BR.characterDetailsColor);
     }
 }

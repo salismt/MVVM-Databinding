@@ -38,18 +38,9 @@ public class DetailActivity extends AppCompatActivity {
 
         setTitle(viewModel.getTitle());
 
-        ImageView imgCharacter = (ImageView) findViewById(R.id.image_character);
-        characterDetails = (TextView) findViewById(R.id.text_character_story);
-
-        Picasso.with(this)
-                .load(Uri.parse(gotCharacter.fullUrl))
-                .placeholder(R.drawable.profile_placeholder_full)
-                .error(R.drawable.profile_placeholder_error_full)
-                .into(imgCharacter);
-
     }
 
     public void onChangeDescriptionColor(View view) {
-        characterDetails.setTextColor(Color.BLUE);
+        binding.getViewModel().setCharacterDetailsColor(Color.BLUE);
     }
 }
