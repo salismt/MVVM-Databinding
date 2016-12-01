@@ -43,6 +43,10 @@ public class GoTCharacter implements Parcelable, BaseColumns {
         this.description = description;
     }
 
+    public String getFullName() {
+        return this.firstName + " " + this.lastName;
+    }
+
     @Override
     public int describeContents() {
         return 0;

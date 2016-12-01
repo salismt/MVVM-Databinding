@@ -30,7 +30,11 @@ public class DetailActivity extends AppCompatActivity {
 
         GoTCharacter gotCharacter = getIntent().getParcelableExtra(EXTRA_CHARACTER);
 
-        setTitle(gotCharacter.firstName + " " + gotCharacter.lastName);
+        if (gotCharacter.getFullName().startsWith("A"))
+            setTitle("Sir " + gotCharacter.getFullName());
+        else
+            setTitle(gotCharacter.getFullName());
+
         ImageView imgCharacter = (ImageView) findViewById(R.id.image_character);
         ImageView imgHouse = (ImageView) findViewById(R.id.image_house);
         TextView textHouseName = (TextView) findViewById(R.id.text_house_name);
