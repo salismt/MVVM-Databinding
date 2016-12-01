@@ -14,4 +14,9 @@ public class DetailViewModel {
         return gotCharacter.getFullName() != null && gotCharacter.getFullName().startsWith("A") ?
                 "Sir " + gotCharacter.getFullName() : gotCharacter.getFullName();
     }
+
+    public String getHouseName() {
+        return gotCharacter.house != null && gotCharacter.house.equals("Stark") ?
+                "Chateau " + gotCharacter.house : gotCharacter.house;
+    }
 }

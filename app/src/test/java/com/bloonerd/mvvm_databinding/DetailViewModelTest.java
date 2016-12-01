@@ -15,4 +15,13 @@ public class DetailViewModelTest {
         assertEquals("Sir Arya Stark", viewModel.getTitle());
 
     }
+
+    @Test
+    public void shouldGetHouseWithChateauPrefix() throws Exception {
+
+        GoTCharacter goTCharacter = new GoTCharacter("Arya", "Stark", SERVER_URL + "arya_full.jpg", true, "Stark", R.drawable.stark, "Arya Stark is the third child and second daughter of Lord Eddard Stark and Lady Catelyn Tully", SERVER_URL + "arya.jpg");
+        DetailViewModel viewModel = new DetailViewModel(goTCharacter);
+        assertEquals("Chateau Stark", viewModel.getHouseName());
+
+    }
 }

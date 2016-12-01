@@ -48,10 +48,7 @@ public class DetailActivity extends AppCompatActivity {
         characterDetails.setText(gotCharacter.description);
         imgHouse.setImageResource(gotCharacter.houseResId);
 
-        if (gotCharacter.house != null && gotCharacter.house.equals("Stark"))
-            textHouseName.setText("Chateau " + gotCharacter.house);
-        else
-            textHouseName.setText(gotCharacter.house);
+        textHouseName.setText(viewModel.getHouseName());
 
         int color = gotCharacter.alive ? Color.GREEN : Color.RED;
         characterDetails.setTextColor(color);
